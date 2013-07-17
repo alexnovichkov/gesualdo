@@ -1,4 +1,4 @@
-#include <QtWidgets/QApplication>
+#include <QGuiApplication>
 #include <QtQml>
 #include <QtQuick/QQuickView>
 //#include "qtquick2applicationviewer.h"
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 //    return app.exec();
 
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine(QUrl("qml/main.qml"));
     QQmlContext *context = engine.rootContext();
@@ -32,10 +32,11 @@ int main(int argc, char *argv[])
 
     QObject *topLevel = engine.rootObjects().value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
-    if ( !window ) {
+    if (!window) {
         qWarning("Error: Your root item has to be a Window.");
         return -1;
     }
+
     window->show();
     return app.exec();
 }
