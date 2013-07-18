@@ -13,13 +13,19 @@ iconsfolder.target =
 DEPLOYMENTFOLDERS = qmlfolder iconsfolder
 
 SOURCES += \
-    src/main.cpp
+    src/main.cpp \
+    src/model.cpp
 
 OTHER_FILES += \
     src/qml/main.qml \
-    src/qml/ToolBarSeparator.qml
+    src/qml/ToolBarSeparator.qml \
+    src/qml/FancyAction.qml \
+    src/qml/helpers.js
 
 include(src/deployment.pri)
 
 #stolen from Qt Creator default project
 qtcAddDeployment()
+
+HEADERS += \
+    src/model.h

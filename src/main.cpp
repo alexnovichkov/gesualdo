@@ -1,31 +1,20 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QtQml>
 #include <QtQuick/QQuickView>
 //#include "qtquick2applicationviewer.h"
 
+#include "model.h"
+
 static void registerTypes()
 {
     //register all classes that can be used in the app
-    //qmlRegisterType<DocumentHandler>("org.qtproject.example", 1, 0, "DocumentHandler");
+    qmlRegisterType<Model>("org.alexnovichkov.gesualdo", 1, 0, "Model");
 }
 
 int main(int argc, char *argv[])
 {
-//    QGuiApplication app(argc, argv);
-
-//    registerTypes();
-
-//    QtQuick2ApplicationViewer viewer;
-//    //viewer.rootContext();
-//    //
-
-//    viewer.setMainQmlFile(QStringLiteral("qml/gesualdo/main.qml"));
-//    viewer.showExpanded();
-
-//    return app.exec();
-
-    QGuiApplication app(argc, argv);
-
+    QApplication app(argc, argv);
+    registerTypes();
     QQmlApplicationEngine engine(QUrl("qml/main.qml"));
     QQmlContext *context = engine.rootContext();
     context->setContextProperty("window_title", "w_title");
